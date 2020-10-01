@@ -11,12 +11,34 @@ soong_namespace {
     ],
 }
 
+soong_config_module_type {
+    name: "powerhal_supported_features",
+    module_type: "cc_defaults",
+    config_namespace: "lineagePowerHalVars",
+    value_variables: ["powerhal_mode_ext"],
+    properties: [
+        "cflags",
+        "srcs",
+    ],
+}
+
+powerhal_supported_features {
+    name: "powerhal_supported_features_defaults",
+    soong_config_variables: {
+        powerhal_mode_ext: {
+            cflags: ["-DMODE_EXT"],
+            srcs: ["%s"],
+        },
+    },
+}
+
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
     relative_install_path: "hw",
     init_rc: ["aidl/android.hardware.power-service.lineage-libperfmgr.rc"],
     vintf_fragments: ["aidl/android.hardware.power-service.lineage.xml"],
     vendor: true,
+    defaults: ["powerhal_supported_features_defaults"],
     cflags: [
         "-Wno-unused-variable",
         "-Wno-unused-parameter",
