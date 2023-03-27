@@ -17,9 +17,11 @@ cc_test {
     vendor: true,
     require_root: true,
     srcs: [
+        "aidl/tests/BackgroundWorkerTest.cpp",
         "aidl/tests/SessionTaskMapTest.cpp",
         "aidl/tests/UClampVoterTest.cpp",
         "aidl/SessionTaskMap.cpp",
+        "aidl/BackgroundWorker.cpp",
         "aidl/SessionValueEntry.cpp",
         "aidl/UClampVoter.cpp",
     ],
@@ -64,6 +66,7 @@ cc_binary {
         "pixel-power-ext-V1-ndk",
     ],
     srcs: [
+        "aidl/BackgroundWorker.cpp",
         "aidl/service.cpp",
         "aidl/InteractionHandler.cpp",
         "aidl/Power.cpp",
