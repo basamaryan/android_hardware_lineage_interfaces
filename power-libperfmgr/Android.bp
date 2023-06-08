@@ -11,6 +11,30 @@ soong_namespace {
     ],
 }
 
+cc_test {
+    name: "libadpf_test",
+    proprietary: true,
+    vendor: true,
+    require_root: true,
+    srcs: [
+        "aidl/tests/UClampVoterTest.cpp",
+        "aidl/UClampVoter.cpp",
+    ],
+    cpp_std: "gnu++20",
+    static_libs: [
+        "libgmock",
+        "android.hardware.power-V4-ndk",
+    ],
+    shared_libs: [
+        "liblog",
+        "libbase",
+        "libcutils",
+        "libutils",
+        "libperfmgr",
+    ],
+    test_suites: ["device-tests"],
+}
+
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
     defaults: [
@@ -35,7 +59,6 @@ cc_binary {
         "libprocessgroup",
         "libutils",
         "pixel-power-ext-V1-ndk",
-        "libprotobuf-cpp-full",
     ],
     srcs: [
         "aidl/service.cpp",
@@ -44,7 +67,9 @@ cc_binary {
         "aidl/PowerExt.cpp",
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
+        "aidl/UClampVoter.cpp",
     ],
+    cpp_std: "gnu++20",
 }
 
 cc_library_static {
