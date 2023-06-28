@@ -13,6 +13,7 @@ soong_namespace {
 
 cc_test {
     name: "libadpf_test",
+    defaults: ["android.hardware.power-ndk_static"],
     proprietary: true,
     vendor: true,
     require_root: true,
@@ -28,7 +29,6 @@ cc_test {
     cpp_std: "gnu++20",
     static_libs: [
         "libgmock",
-        "android.hardware.power-V4-ndk",
     ],
     shared_libs: [
         "liblog",
@@ -43,6 +43,7 @@ cc_test {
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
     defaults: [
+        "android.hardware.power-ndk_shared",
         "power_libperfmgr_defaults",
     ],
     relative_install_path: "hw",
@@ -54,7 +55,6 @@ cc_binary {
         "-Wno-unused-parameter",
     ],
     shared_libs: [
-        "android.hardware.power-V4-ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
@@ -82,11 +82,9 @@ cc_binary {
 
 cc_library_static {
     name: "libperfmgr-ext",
+    defaults: ["android.hardware.power-ndk_shared"],
     vendor: true,
     srcs: [
         "aidl/PowerModeExtension.cpp",
-    ],
-    shared_libs: [
-        "android.hardware.power-V4-ndk",
     ],
 }
