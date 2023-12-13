@@ -32,11 +32,14 @@ cc_test {
     cpp_std: "gnu++20",
     static_libs: [
         "libgmock",
+        "android.hardware.common-V2-ndk",
+        "android.hardware.common.fmq-V1-ndk",
     ],
     shared_libs: [
         "liblog",
         "libbase",
         "libcutils",
+        "libfmq",
         "libutils",
         "libperfmgr",
         "libbinder_ndk",
@@ -70,6 +73,8 @@ cc_binary {
         "libprocessgroup",
         "libutils",
         "pixel-power-ext-V1-ndk",
+        "android.hardware.common.fmq-V1-ndk",
+        "libfmq",
     ],
     srcs: [
         "aidl/BackgroundWorker.cpp",
