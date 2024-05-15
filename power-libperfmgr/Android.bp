@@ -27,7 +27,7 @@ powerhal_supported_features {
     soong_config_variables: {
         powerhal_mode_ext: {
             cflags: ["-DMODE_EXT"],
-            srcs: ["%s"],
+            srcs: [nether/"%s"],
         },
     },
 }
