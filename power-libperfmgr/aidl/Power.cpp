@@ -282,6 +282,8 @@ ndk::ScopedAStatus Power::createHintSessionWithConfig(
 
     *_aidl_return = session;
     session->getSessionConfig(config);
+    PowerSessionManager<>::getInstance()->registerSession(session, config->id);
+
     return ndk::ScopedAStatus::ok();
 }
 
