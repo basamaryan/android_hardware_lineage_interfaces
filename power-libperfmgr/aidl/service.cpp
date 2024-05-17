@@ -31,7 +31,6 @@
 
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
-using aidl::google::hardware::power::impl::pixel::PowerSessionManager;
 using ::android::perfmgr::HintManager;
 
 constexpr std::string_view kPowerHalInitProp("vendor.powerhal.init");
